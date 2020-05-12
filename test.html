@@ -9,13 +9,44 @@
 </head>
 <body>
 
-<p><code>&lt;header&gt;</code> 作为内联元素被包围。</p>
-<p>如果需要把代码显示为一个独立的块元素，请使用 &lt;pre&gt; 标签：</p>
+<div class="jumbotron">
+    <h1>Git学习笔记</h1>
+    <p>根据极客时间“玩转Git三剑客”教程整理</p>
+    <p href="https://time.geekbang.org/course/detail/100021601-73561">玩转Git三剑客</p>
+</div>
+
+<p>1.VCS的发展历史</p>
+<p>2.Git安装</p>
+<p>3.Git环境变量</p>
+<p><code>git config --list</code>:显示所有Git环境变量</p>
+<p><code>git config --list --[system|global|local]</code>:显示不同层级Git环境变量。local：只针对当前repo。global：针对当前登陆用户的所有repo。system：针对该机器所有登陆用户的repo</p>
+<p>比如<code>git config --list --local user.name</code>:显示当前repo拥有者的名字。注意，local只有在切换到git repo路径下才能使用。</p>
+<p><code>git config --local user.name 'yourname'</code>:可以将用户名设置为yourname</p>
+<p>4.创建Git Repo</p>
+<p>如果没有建立项目，可以切换到想要建立项目的根目录<code>git init repo-name</code>
 <pre>
-&lt;article&gt;
-	&lt;h1&gt;Article Heading&lt;/h1&gt;
-&lt;/article&gt;
+cd root-dir
+git init repo-name /会在root-dir下建立一个repo-name为名的文件夹
 </pre>
+<p>如果已建立项目，但是想要纳入Git管理，可以切换到项目目录<code>git init</code>
+<pre>
+cd repo-dir
+git init
+</pre>
+<p>如果最终想要在github上管理，也可以现在github上创建项目，然后在本地<code>git clone</code>
+<pre>
+cd root-dir
+git clone link-to-the-repo
+</pre>
+<p>Git包括工作区和暂存区(Stage)
+<p>将文件从工作区加至暂存区<code>git add file-name-to-add</code>
+<p>将文件从暂存区删除<code>git rm --cached file-name-to-unstage</code>
+<p><code>git status</code>查看现在缓存区的状态
+<p><code>git log</code>查看git日志
+<p><code>git add -u</code>将所有曾经被add到stage的文件（这些文件已被track），如有更新，一同添加到stage
+<p><code>git reset --hard</code>抹去所有工作区，暂存区的文件变更
+<p><code>git rm old-file-name new-file-name</code>重命名文件
+
 
 </body>
 </html>
