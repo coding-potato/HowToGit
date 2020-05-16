@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8"> 
-	<title>Bootstrap 实例 - 代码</title>
+	<title>Git 笔记</title>
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -38,15 +38,43 @@ git init
 cd root-dir
 git clone link-to-the-repo
 </pre>
+<p>5.Git的基本操作</p>
 <p>Git包括工作区和暂存区(Stage)
 <p>将文件从工作区加至暂存区<code>git add file-name-to-add</code>
 <p>将文件从暂存区删除<code>git rm --cached file-name-to-unstage</code>
 <p><code>git status</code>查看现在缓存区的状态
-<p><code>git log</code>查看git日志
 <p><code>git add -u</code>将所有曾经被add到stage的文件（这些文件已被track），如有更新，一同添加到stage
 <p><code>git reset --hard</code>抹去所有工作区，暂存区的文件变更
+<p><code>git commit -am'commit message'</code>将工作区的变更越过暂存区直接添加
+<p><code>git commit --amend</code>更新commit message
 <p><code>git rm old-file-name new-file-name</code>重命名文件
-
-
+<p><code>git log</code>查看git日志
+<p><code>git log --oneline</code>查看git日志，每个commit只有一行作为summary
+<p><code>git log -n4</code>查看最近的4条git日志
+<p><code>git log --all</code>显示所有branch的日志
+<p><code>git log branch-to-view</code>显示所有branch-to-view的日志
+<p><code>git log --graph</code>用图形化方式展示日志
+<p><code>git branch -v</code>查看所有本地分支
+<p><code>git branch -d branch-to-delete</code>删除所选本地分支，如果无法删除，可以是使用<code>-D</code>
+<p><code>git checkout -b new-branch-name</code>创建并切换到新分支
+<p><code>git branch -av</code>展示所有active的分支
+<p><code>git branch new-branch-name hashkey-of-commit</code>为hashkey-of-commit创建一个分支，命名为new-branch-name
+<p>merge branch-A to branch-B
+<pre>
+git checkout branch-B /checkout到你想要并入的分支
+git merger branch-A /合并branch-A到branch-B
+</pre>
+<p><code>git diff commit1 commit2</code>比较commit1和commit2
+<p><code>git cat-file hashkey-for-git-object -t</code>查看hashkey-for-git-object的类型，git object可能是commit，tag，tree，blob
+<p><code>git cat-file hashkey-for-git-object -p</code>查看hashkey-for-git-object的内容
+<p>detached HEAD:分离头指针，是指当前工作（HEAD）没有挂钩任何分支，当切换分支时，git会提示detached HEAD，此时可以选择联系到分支或者放弃储存变更，如果在切换分支时，没有做相应处理，commit将不会纳入分支文件管理，之后可能会被清理
+<p>6.图形化界面
+<p><code>gitk</code>启动图形化git界面
+<p>TODO: 1，界面截图，及基本介绍
+<p>7.<code>.git</code>文件夹内容
+<p>TODO: 1. create a file tree of this folder 2. show examples of certain files and folders：HEAD，config，refs，objects
+<p>8.git对象及存储机制
+TODO:1, the relationship among blob,tree and commit 2, an example to show the relation
+<p>9.Head与branch
 </body>
 </html>
