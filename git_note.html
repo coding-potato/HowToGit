@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Git 笔记</title>
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
@@ -15,14 +16,7 @@
     <p href="https://time.geekbang.org/course/detail/100021601-73561">玩转Git三剑客</p>
 </div>
 
-<p>1.VCS的发展历史</p>
-<p>2.Git安装</p>
-<p>3.Git环境变量</p>
-<p><code>git config --list</code>:显示所有Git环境变量</p>
-<p><code>git config --list --[system|global|local]</code>:显示不同层级Git环境变量。local：只针对当前repo。global：针对当前登陆用户的所有repo。system：针对该机器所有登陆用户的repo</p>
-<p>比如<code>git config --list --local user.name</code>:显示当前repo拥有者的名字。注意，local只有在切换到git repo路径下才能使用。</p>
-<p><code>git config --local user.name 'yourname'</code>:可以将用户名设置为yourname</p>
-<p>4.创建Git Repo</p>
+<h1>创建Git Repo</h1>
 <p>如果没有建立项目，可以切换到想要建立项目的根目录<code>git init repo-name</code>
 <pre>
 cd root-dir
@@ -38,43 +32,68 @@ git init
 cd root-dir
 git clone link-to-the-repo
 </pre>
-<p>5.Git的基本操作</p>
-<p>Git包括工作区和暂存区(Stage)
-<p>将文件从工作区加至暂存区<code>git add file-name-to-add</code>
-<p>将文件从暂存区删除<code>git rm --cached file-name-to-unstage</code>
-<p><code>git status</code>查看现在缓存区的状态
-<p><code>git add -u</code>将所有曾经被add到stage的文件（这些文件已被track），如有更新，一同添加到stage
-<p><code>git reset --hard</code>抹去所有工作区，暂存区的文件变更
-<p><code>git commit -am'commit message'</code>将工作区的变更越过暂存区直接添加
-<p><code>git commit --amend</code>更新commit message
-<p><code>git rm old-file-name new-file-name</code>重命名文件
-<p><code>git log</code>查看git日志
-<p><code>git log --oneline</code>查看git日志，每个commit只有一行作为summary
-<p><code>git log -n4</code>查看最近的4条git日志
-<p><code>git log --all</code>显示所有branch的日志
-<p><code>git log branch-to-view</code>显示所有branch-to-view的日志
-<p><code>git log --graph</code>用图形化方式展示日志
-<p><code>git branch -v</code>查看所有本地分支
-<p><code>git branch -d branch-to-delete</code>删除所选本地分支，如果无法删除，可以是使用<code>-D</code>
-<p><code>git checkout -b new-branch-name</code>创建并切换到新分支
-<p><code>git branch -av</code>展示所有active的分支
-<p><code>git branch new-branch-name hashkey-of-commit</code>为hashkey-of-commit创建一个分支，命名为new-branch-name
-<p>merge branch-A to branch-B
-<pre>
-git checkout branch-B /checkout到你想要并入的分支
-git merger branch-A /合并branch-A到branch-B
+<h1>Git的基本操作</h1>
+<h3><code>git add</code> -- 将文件从工作区添加到暂存区</h3>
+<ul>
+        <li><code>git add file1</code>:将file1添加到暂存区进行文件管理，如果要添加多个文件，可以用空格将文件名隔开。同时也可以将整个文件夹加入管理。</li>
+              <ul>
+                     <li><code>git add file1 file2 file3</code></li>
+                     <li><code>git add file1 folder1</code></li>
+              </ul>
+        <li><code>git add -u</code>:如果之前已有文件被添加到暂存区管理，之后这些文件又发生了一些变更，可以使用这个操作，将所有变更的文件添加到暂存区管理</li>
+</ul>
+<h3><code>git status</code> -- 查看现在git暂存区的状态</h3>
+<h3><code>git rm</code>--</h3>
+<ul>
+        <li><code>git rm --cached file-name-to-unstage</code>:将文件从暂存区移除，暂存区将不追踪该文件的变化</li>
+        <li><code>git rm file1</code>:将文件删除，同时如果该文件已经被暂存区管理，git也会做相应操作，之后会影响到代码仓库</li>
+</ul>
+<h3><code>git mv</code>--</h3>
+<ul>
+        <li><code>git mv old-file-name new-file-name</code>:会将文件从旧的地址转移到新的地址，如果此时该文件已经被暂存区管理，相应变化也将影响到代码仓库。也可用于文件重命名</li>
+</ul>
+<h3><code>git log</code>--查看git日志</h3>
+<ul>
+        <li><code>git log --oneline</code>:每个commit以一行总结的方式显示</li>
+        <li><code>git log -nx</code>:查看最近的x条git日志</li>
+        <li><code>git log --all</code>:显示所有branch的日志</li>
+        <li><code>git log branch-to-view</code>:只显示branch-to-view的相关日志</li>
+        <li><code>git log --graph</code>:用图形化方式展示日志</li>
+</ul>
+<h3><code>git reset --hard</code>--抹去所有工作区，暂存区的文件变更</h3>
+<h3><code>git commit</code>--将变更从暂存区提交到代码仓库</h3>
+<ul>
+        <li><code>git commit -m'commit message'</code>:将变更从暂存区提交到代码仓库，并书写变更信息注释</li>
+        <li><code>git commit -am'commit message'</code>:将变更从工作区越过暂存区直接提交到代码仓库，并书写变更信息注释</li>
+        <li><code>git commit --amend</code>:更新commit message</li>
+</ul>
+<h3><code>git branch</code>--显示git分支</h3>
+<ul>
+        <li><code>git branch -v</code>:查看所有本地分支</li>
+        <li><code>git branch -d branch-to-delete</code>:删除所选本地分支，如果无法删除，可以是使用<code>-D</code></li>
+        <li><code>git checkout branch-name</code>:切换分支</li>
+        <li><code>git checkout -b new-branch-name</code>:创建并切换到新分支</li>
+        <li><code>git branch -av</code>:？？？？</li>
+        <li><code>git branch new-branch-name hashkey-of-commit</code>:为hashkey-of-commit创建一个分支，命名为new-branch-name</li>
+        <li>merge branch-A to branch-B</li>
+ <pre>
+ git checkout branch-B /checkout到你想要并入的分支
+ git merger branch-A /合并branch-A到branch-B
 </pre>
-<p><code>git diff commit1 commit2</code>比较commit1和commit2
-<p><code>git cat-file hashkey-for-git-object -t</code>查看hashkey-for-git-object的类型，git object可能是commit，tag，tree，blob
-<p><code>git cat-file hashkey-for-git-object -p</code>查看hashkey-for-git-object的内容
-<p>detached HEAD:分离头指针，是指当前工作（HEAD）没有挂钩任何分支，当切换分支时，git会提示detached HEAD，此时可以选择联系到分支或者放弃储存变更，如果在切换分支时，没有做相应处理，commit将不会纳入分支文件管理，之后可能会被清理
-<p>6.图形化界面
-<p><code>gitk</code>启动图形化git界面
-<p>TODO: 1，界面截图，及基本介绍
-<p>7.<code>.git</code>文件夹内容
-<p>TODO: 1. create a file tree of this folder 2. show examples of certain files and folders：HEAD，config，refs，objects
-<p>8.git对象及存储机制
-TODO:1, the relationship among blob,tree and commit 2, an example to show the relation
-<p>9.Head与branch
+</ul>
+<h3><code>git diff</code>--比较不同提交上的代码</h3>
+<ul>
+        <li><code>git diff commit1 commit2</code>:比较commit1和commit2上所有文件的不同</li>
+        <li><code>git diff commit1 commit2 --file-name</code>:比较commit1和commit2上文件file-name的不同</li>
+</ul>
+<h3><code>git cat-file</code>--查看git object</h3>
+<ul>
+        <li><code>git cat-file hashkey-for-git-object -t</code>:查看hashkey-for-git-object的类型，git object可能是commit，tag，tree，blob</li>
+        <li><code>git cat-file hashkey-for-git-object -p</code>:查看hashkey-for-git-object的内容</li>
+</ul>
+<h1>Git的一些常见问题</h1>
+<ul>
+        <li>detached HEAD:分离头指针，是指当前工作（HEAD）没有挂钩任何分支，当切换分支时，git会提示detached HEAD，此时可以选择联系到分支或者放弃储存变更，如果在切换分支时，没有做相应处理，commit将不会纳入分支文件管理，之后可能会被清理</li>
+</ul>
 </body>
 </html>

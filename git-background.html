@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Git 笔记</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="jumbotron">
+    <h1>Git学习笔记</h1>
+    <p>根据极客时间“玩转Git三剑客”教程整理</p>
+    <p href="https://time.geekbang.org/course/detail/100021601-73561">玩转Git三剑客</p>
+</div>
+
+<h1>1.VCS的发展历史</h1>
+<h1>2.Git安装</h1>
+<h1>3.Git环境变量</h1>
+<p><code>git config --list</code>:显示所有Git环境变量</p>
+<p><code>git config --list --[system|global|local]</code>:显示不同层级Git环境变量。local：只针对当前repo。global：针对当前登陆用户的所有repo。system：针对该机器所有登陆用户的repo</p>
+<p>比如<code>git config --list --local user.name</code>:显示当前repo拥有者的名字。注意，local只有在切换到git repo路径下才能使用。</p>
+<p><code>git config --local user.name 'yourname'</code>:可以将用户名设置为yourname</p>
+<h1>4.Git基本工作原理</h1>
+<h1>5.<code>.git</code>文件夹内容</h1>
+<h1>6.git对象及存储机制</h1>
+TODO:1, the relationship among blob,tree and commit 2, an example to show the relation
+<h1>7.图形化界面</h1>
+<p><code>gitk</code>启动图形化git界面
+<p>TODO: 1，界面截图，及基本介绍
+
+<p>TODO: 1. create a file tree of this folder 2. show examples of certain files and folders：HEAD，config，refs，objects
+<p>9.Head与branch
+</body>
+</html>
