@@ -16,23 +16,46 @@
     <p href="https://time.geekbang.org/course/detail/100021601-73561">玩转Git三剑客</p>
 </div>
 
-<h1>创建Git Repo</h1>
-<p>如果没有建立项目，可以切换到想要建立项目的根目录<code>git init repo-name</code>
+
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        <h3 class="panel-title">创建/获取Git Repo</h3>
+    </div>
+    <div class="panel-body">
+        <h3><code>git init</code> -- 初始化，创建git仓库</h3>
+<blockquote>
+<p>git-init - Create an empty Git repository or reinitialize an existing one</p>
+<small>https://git-scm.com/docs/git-init</small>
+</blockquote>
+<p>Git仓库本质而言是一个普通文件夹附带一个<code>.git</code>文件夹，其中包含<code>objects</code>，<code>refs/heads</code>，<code>refs/tags</code>等文件夹以及<code>HEAD</code>等指针文件，这些文件共同实现了git对文件的管理
+<ul>
+        <li>如果没有建立项目，可以切换到想要建立项目的根目录<code>git init repo-name</code></li>
 <pre>
 cd root-dir
 git init repo-name /会在root-dir下建立一个repo-name为名的文件夹
 </pre>
-<p>如果已建立项目，但是想要纳入Git管理，可以切换到项目目录<code>git init</code>
+       <li>如果已建立项目，但是想要纳入Git管理，可以切换到项目目录<code>git init</code></li>
 <pre>
 cd repo-dir
 git init
 </pre>
-<p>如果最终想要在github上管理，也可以现在github上创建项目，然后在本地<code>git clone</code>
+</ul>
+<h3><code>git clone</code> -- 克隆远端项目、代码仓库到本地</h3>
+<ul>
+        <li>如果最终想要在github上管理，也可以现在github上创建项目，然后在本地<code>git clone</code></li>
 <pre>
 cd root-dir
 git clone link-to-the-repo
 </pre>
-<h1>Git的基本操作</h1>
+</ul>
+    </div>
+</div>
+
+<div class="panel panel-danger">
+    <div class="panel-heading">
+          <h3 class="panel-title">Git的基本操作</h3>
+    </div>
+    <div class="panel-body">
 <h3><code>git add</code> -- 将文件从工作区添加到暂存区</h3>
 <ul>
         <li><code>git add file1</code>:将file1添加到暂存区进行文件管理，如果要添加多个文件，可以用空格将文件名隔开。同时也可以将整个文件夹加入管理。</li>
@@ -91,9 +114,15 @@ git clone link-to-the-repo
         <li><code>git cat-file hashkey-for-git-object -t</code>:查看hashkey-for-git-object的类型，git object可能是commit，tag，tree，blob</li>
         <li><code>git cat-file hashkey-for-git-object -p</code>:查看hashkey-for-git-object的内容</li>
 </ul>
+</div>
+</div>
 <h1>Git的一些常见问题</h1>
 <ul>
         <li>detached HEAD:分离头指针，是指当前工作（HEAD）没有挂钩任何分支，当切换分支时，git会提示detached HEAD，此时可以选择联系到分支或者放弃储存变更，如果在切换分支时，没有做相应处理，commit将不会纳入分支文件管理，之后可能会被清理</li>
+</ul>
+<h1>Reference</h1>
+<ul>
+        <li>Git official documents @ https://git-scm.com/docs</li>
 </ul>
 </body>
 </html>
